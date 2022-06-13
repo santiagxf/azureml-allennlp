@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+display_name: tweets-hate-classifier
+experiment_name: tweets-hate-classifier
+description: A model to predict if there is hate in a tweet in portuguese
+code: ../../src
+command: >-
+  allennlp train ${{inputs.architecture}} \
+                 -s ${{outputs.train_results}} \
+                 --overrides "{ 'train_data_path': '${{inputs.train_data_path}}', 'validation_data_path': '${{inputs.eval_data_path}}'}"
+inputs:
+  train_data_path:
+    type: uri_file
+    path: portuguese-hate-tweets:1
+  eval_data_path:
+    type: uri_file
+    path: portuguese-hate-tweets-eval:1
+  architecture:
+    type: uri_file
+    path: ../../src/model.jsonnet
+    mode: download
+outputs:
+  train_results:
+    mode: upload
+environment:
+  image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+  conda_file: conda_dependencies.yml
+  
+compute: azureml:trainer-gpu

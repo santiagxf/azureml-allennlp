@@ -1,0 +1,15 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8
+  - pip=20.2.4
+  - pip:
+      - jobtools
+      - mlflow
+      - azureml-mlflow
+      - transformers
+      - allennlp
+      - scikit-learn
+      - matplotlib
+      - protobuf~=3.19.0
+      - jobtools

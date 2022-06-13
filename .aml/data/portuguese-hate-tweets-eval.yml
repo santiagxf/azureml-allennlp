@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+name: portuguese-hate-tweets-eval
+version: 1
+type: uri_file
+path: ../../data/portuguese-hate-tweets-eval/sample/data.json
