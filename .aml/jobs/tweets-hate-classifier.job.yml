@@ -9,10 +9,10 @@ command: >-
                  --overrides "{ 'train_data_path': '${{inputs.train_data_path}}', 'validation_data_path': '${{inputs.eval_data_path}}'}"
 inputs:
   train_data_path:
-    type: uri_file
+    type: uri_folder
     path: portuguese-hate-tweets:1
   eval_data_path:
-    type: uri_file
+    type: uri_folder
     path: portuguese-hate-tweets-eval:1
   architecture:
     type: uri_file
